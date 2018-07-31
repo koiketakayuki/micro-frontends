@@ -149,3 +149,31 @@ DOMの変更分だけを再描画したり、Universal Renderingといったも�
 
 ページはProductチームが決めた商品名や画像などを表示しますが、それだけでなく  
 他のチームが作ったコンポーネント(Custom Elements)もページに含まれます。
+
+#### Custom Elementの作り方
+
+例として購入ボタンを考えてみましょう。  
+Productチームは`<blue-buy sku="t_porsche"></blue-buy>`とHTMLの表示したい位置に書けばページにボタンを追加できます。  
+Checkoutチームは`blue-buy`コンポーネントをこのページに登録する必要があります。  
+
+<pre class="highlight"><code>class BlueBuy extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = `&lt;button type="button"&gt;buy for 66,00 €&lt;/button&gt;`;
+  }
+  disconnectedCallback() { ... }
+}
+window.customElements.define('blue-buy', BlueBuy);
+</code></pre>
+
+ブラウザは`blue-buy`を見つけるたびに上のコードのconstructorを呼び出します。  
+`this`は定義されたCustomElement自身への参照を表します。  
+`innerHTML`や`getAttributes()`といったDOMのプロパティは、すべて使用可能です。  
+
+![Custom-Element](https://micro-frontends.org/ressources/video/custom-element.gif)
+
+コンポーネントの名前に関するルールが一つだけあります。  
+HTMLの互換性を保つためにコンポーネント名に`-`を含まなければなりません。  
+以降の例では`[チームカラー]-[機能名]`という命名規則が用いられます。  
+これはチーム間でのコンポーネントの名前衝突を避け、責任を明確にするという目的があります。  
+
