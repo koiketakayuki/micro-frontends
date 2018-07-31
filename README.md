@@ -344,6 +344,7 @@ Custom Elementはコンポーネントとブラウザを統合するすばらし
 javascriptがロードや実行に失敗したら何が起こるかを  
 考えるのは良いことです。
 
-[Jeremy Keith](https://adactio.com/)がebookもしくはpodcastで[Resilient Web Design](https://resilientwebdesign.com/)をこのことについてまとめいています。
+[Jeremy Keith](https://adactio.com/)が[Resilient Web Design](https://resilientwebdesign.com/)でこの問題についてまとめています。
 
-
+よって大事なコンテンツをサーバーサイドでレンダリングすることが大切になるのですが  
+悲しいことにweb componentの仕様では、サーバーサイドレンダリングに関する言及はありません。
