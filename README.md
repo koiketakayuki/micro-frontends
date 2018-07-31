@@ -330,6 +330,6 @@ $('blue-buy')[0].addEventListener('blue:basket:changed', function() {
 </code></pre>
 
 DOMのメソッドを呼び出すということは普通はやりませんが
-[video-elemtn api](https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback)ではよく使われます。  
+[video-elemt api](https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback)ではよく使われます。  
 
 可能なら宣言的な方法(属性が変わった際に自動で更新される方法)の方が望ましいでしょう。
