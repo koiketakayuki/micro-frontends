@@ -268,7 +268,7 @@ Custom ElementはWeb標準なのでAngular, React, Preact, Vue, Hyperappなど
 コンポーネントはメッセージを発行し、他のコンポーネントは  
 そのメッセージを(どのコンポーネントから来たかは知らずに)受け取ります。  
 ラッキーなことにブラウザには初めからこの機能が組み込まれています。  
-`click`, `select`, `mouseover`といったイベントをハンドリングする時と
+`click`, `select`, `mouseover`といったイベントをハンドリングする時と  
 全く同じようにこの機能をCustom Elementで使うことができます。  
 また` new CustomEvent(...)`とすることで、独自のイベントも使うことが可能です。
 Eventは常にそれが発火された、もしくは渡された場所と紐づいています。  
