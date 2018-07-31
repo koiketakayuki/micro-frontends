@@ -51,6 +51,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 [Optimic UI](https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-user-interfaces/)や
 [Skelton Screens](https://micro-frontends.org/#the-dom-is-the-api)のようなテクニックを使いたいなら  
 UIを**デバイス上で更新する必要があります**。  
+
 また、Googleの
 [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/)
 では高速なパフォーマンスと、すべての人にコンテンツを届けることの両立(Progerssive Enhancement)を説明しています。  
@@ -84,7 +85,7 @@ CustomElementはその技術の実装を隠して、技術に依存しないイ�
 ブラウザネイティブのイベントを用いるましょう。  
 もし自作のAPIが必要なら、できるだけシンプルにしましょう。  
 
-+ 不測の事態に強いサイトにする
++ 不測の事態に強い(Risilient)サイトにする
 
 例えjavascriptが動かなくかったり、途中で止まったりしても、そのサイトは役立つかもしれません。  
 体感パフォーマンスを上げるためにUniversal RenderingやProgressive Enhancementの考え方を取り入れましょう
@@ -100,4 +101,17 @@ Custom Elementsはブラウザにアプリを統合するのに役立ちます�
 こうすることで、このコンポーネントがどんなライブラリを使って作られたのかを知る必要なしに使えます。  
 ただDOMとやりとりすればいいのです。
 
+ただ、Custom Elementだけではすべての問題を解決できません。  
+Progressive EnhancementやUniversal Rendering、ルーティングなどを実現するためには  
+別のテクノロジーが必要になります。  
 
+以下のページは二つのセクションに分かれています。
+最初にページの組み立て(どのような別々のチームに実装されたコンポーネントを組み合わせるか)について、  
+次にクライアントサイドでのページ遷移の例を説明します。
+
+## ページの組み立て(Page Composition)
+
+色んなフレームワークで書かれたコードを、クライアントとサーバー両方に統合する  
+ということ以外にも、jsの分離、CSSの衝突の避け方、遅延読み込み  
+チーム間で同じリソースを共有する方法、データ取得、ローディングなど議論すべきことたくさんがあります。  
+これらのトピックは一度にまとめて紹介します。
