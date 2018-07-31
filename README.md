@@ -144,5 +144,8 @@ DOMの変更分だけを再描画したり、Universal Renderingといったも�
 
 ![Client-side integration](https://micro-frontends.org/ressources/screen/three-teams.png)
 
+[ブラウザで試す](https://micro-frontends.org/1-composition-client-only/)&[Github](https://github.com/neuland/micro-frontends/tree/master/1-composition-client-only)
+
+
 ページはProductチームが決めた商品名や画像などを表示しますが、それだけでなく  
 他のチームが作ったコンポーネント(Custom Elements)もページに含まれます。
