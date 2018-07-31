@@ -177,7 +177,7 @@ HTMLの互換性を保つためにコンポーネント名に`-`を含まなけ�
 以降の例では`[チームカラー]-[機能名]`という命名規則が用いられます。  
 これはチーム間でのコンポーネントの名前衝突を避け、責任を明確にするという目的があります。  
 
-#### 親/子間でのデータの受け渡し / DOMの更新
+#### 親->子間でのデータの受け渡し/DOMの更新
 
 ユーザーがセレクターでトラクターを切り替えたときに  
 それに応じて購入ボタンも更新しなければなりません。  
@@ -253,3 +253,83 @@ Custom ElementはWeb標準なのでAngular, React, Preact, Vue, Hyperappなど
 しかし細かい点を見ると、対応できていなかったり、バグがあったりします。  
 [Custom Elements Everywhere Rob Dodson](https://custom-elements-everywhere.com/)では  
 これらの問題をまとめてくれています
+
+### 子 -> 親間(もしくは兄弟間)のデータのやりとり/DOMイベント
+
+親から子にデータを渡すだけでは不十分です。  
+先ほどの例では、購入ボタンを押したときにミニバスケットの表示を  
+変更する必要があり、これは親から子へのデータの受け渡しだけでは実現できません。  
+
+この２つのコンポーネントはCheckoutチーム(青)の担当です。  
+購入ボタンとミニバスケットを繫ぐAPIを実装することも可能ですが  
+その方法では、購入ボタンとミニバスケットが密結合し、コンポーネントの分離原則が破られてしまいます。  
+
+クリーンな方法は、PubSubパターンを使うことです。  
+コンポーネントはメッセージを発行し、他のコンポーネントは  
+そのメッセージを(どのコンポーネントから来たかは知らずに)受け取ります。  
+ラッキーなことにブラウザには初めからこの機能が組み込まれています。  
+`click`, `select`, `mouseover`といったイベントをハンドリングする時と
+全く同じようにこの機能をCustom Elementで使うことができます。  
+また` new CustomEvent(...)`とすることで、独自のイベントも使うことが可能です。
+Eventは常にそれが発火された、もしくは渡された場所と紐づいています。  
+ほとんどのイベントはbubblingの機能を実装しているため  
+特定のDOMのサブツリー内のすべてのイベントを検知するということも可能です。  
+以下は`blue:basket:changed`イベントを発火する例です。
+
+<pre class="highlight"><code>class BlueBuy extends HTMLElement {
+  [...]
+  connectedCallback() {
+    [...]
+    this.render();
+    this.firstChild.addEventListener('click', this.addToCart);
+  }
+  addToCart() {
+    // maybe talk to an api
+    this.dispatchEvent(new CustomEvent('blue:basket:changed', {
+      bubbles: true,
+    }));
+  }
+  render() {
+    this.innerHTML = `&lt;button type="button"&gt;buy&lt;/button&gt;`;
+  }
+  disconnectedCallback() {
+    this.firstChild.removeEventListener('click', this.addToCart);
+  }
+}
+</code></pre>
+
+このミニバスケットは`window`からイベントを購読して  
+内部のデータをリフレッシュします。  
+
+<div class="highlight"><pre class="highlight"><code>class BlueBasket extends HTMLElement {
+  connectedCallback() {
+    [...]
+    window.addEventListener('blue:basket:changed', this.refresh);
+  }
+  refresh() {
+    // fetch new data and render it
+  }
+  disconnectedCallback() {
+    window.removeEventListener('blue:basket:changed', this.refresh);
+  }
+}
+</code></pre></div>
+
+この方法ではミニバスケットコンポーネントは外部の`window`にリスナーを追加します。  
+多くのアプリケーションでは大丈夫なはずですが  
+もしあなたがこの方法を気持ち悪いと思うのなら  
+ページがコンポーネントの変更を検知してミニバスケットの`refresh()`メソッドを呼び出すことで
+再描画する、という書き方も可能です。  
+
+<pre class="highlight"><code>// page.js
+const $ = document.getElementsByTagName;
+
+$('blue-buy')[0].addEventListener('blue:basket:changed', function() {
+  $('blue-basket')[0].refresh();
+});
+</code></pre>
+
+DOMのメソッドを呼び出すということは普通はやりませんが
+[video-elemtn api](https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback)ではよく使われます。  
+
+可能なら宣言的な方法(属性が変わった際に自動で更新される方法)の方が望ましいでしょう。
