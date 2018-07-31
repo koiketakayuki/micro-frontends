@@ -348,3 +348,27 @@ javascriptがロードや実行に失敗したら何が起こるかを
 
 よって大事なコンテンツをサーバーサイドでレンダリングすることが大切になるのですが  
 悲しいことにweb componentの仕様では、サーバーサイドレンダリングに関する言及はありません。
+
+##  Custom Element + サーバーサイドレンダリング = ❤️
+
+前の例でサーバーサイドレンダリングを有効にするためにはリファクタが必要です。  
+各チームはexpressサーバーからコンポーネントを配信します。  
+こうすることで、URL経由でコンポーネントの`render()` メソッドを呼び出せます。
+
+<div class="highlight"><pre class="highlight"><code>$ curl http://127.0.0.1:3000/blue-buy?sku=t_porsche
+&lt;button type="button"&gt;buy for 66,00 €&lt;/button&gt;
+</code></pre></div>
+
+Custom Elementのコンポーネントの名前はURLのパスとして使用されています。  
+属性はGETパラメータとして渡されます。  
+こうすることですべてのコンポーネントをサーバーサイドレンダリングすることが可能です。  　
+
+以下の`<blue-buy>` の例は**Universal Web Component**とほとんど同じことができます。  
+
+<pre class="highlight"><code>&lt;blue-buy sku="t_porsche"&gt;
+  &lt;!--#include virtual="/blue-buy?sku=t_porsche" --&gt;
+&lt;/blue-buy&gt;
+</code></pre>
+
+
+
