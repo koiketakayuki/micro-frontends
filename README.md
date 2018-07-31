@@ -141,5 +141,8 @@ DOMの変更分だけを再描画したり、Universal Renderingといったも�
 **Checkoutチーム(青)** は購入のすべてのプロセスを担当します。ここでは購入ボタンとミニバスケットです。  
 **Inspireチーム(緑)** はこのページのレコメンドを担当します。  
 **Productチーム(赤)** ページ全体を担当します。どの機能が必要で、どこに置くかを決めます。  
+
+![Client-side integration](https://micro-frontends.org/ressources/screen/three-teams.png)
+
 ページはProductチームが決めた商品名や画像などを表示しますが、それだけでなく  
 他のチームが作ったコンポーネント(Custom Elements)もページに含まれます。
