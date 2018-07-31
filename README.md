@@ -177,3 +177,63 @@ HTMLの互換性を保つためにコンポーネント名に`-`を含まなけ�
 以降の例では`[チームカラー]-[機能名]`という命名規則が用いられます。  
 これはチーム間でのコンポーネントの名前衝突を避け、責任を明確にするという目的があります。  
 
+#### 親/子間でのデータの受け渡し / DOMの更新
+
+ユーザーがセレクターでトラクターを切り替えたときに  
+それに応じて購入ボタンも更新しなければなりません。  
+
+Productチームは単に古いコンポーネントを削除して、新しいものを挿入すれば十分です。
+
+<pre class="highlight"><code>container.innerHTML;
+// =&gt; &lt;blue-buy sku="t_porsche"&gt;...&lt;/blue-buy&gt;
+container.innerHTML = '&lt;blue-buy sku="t_fendt"&gt;&lt;/blue-buy&gt;';
+</code></pre>
+
+削除する際に、古いコンポーネントの`disconnectedCallback`が同期的に呼び出されます。  
+その後、新しく作られたコンポーネント(t_fendt)の`constructor`が呼び出されます。
+
+よりパフォーマンスの良い方法は、`sku`プロパティを書き換えることです。
+
+<pre class="highlight"><code>document.querySelector('blue-buy').setAttribute('sku', 't_fendt');
+</code></pre>
+
+もしコンポーネント内でReactのようなDOMの変更を検知するフレームワークを使っていた場合は  
+内部で自動的に再描画されます。
+
+![Custom-Element rerender](https://micro-frontends.org/ressources/video/custom-element-attribute.gif)
+
+このプロパティが書き換わった際に再描画される機能を自前で実装する時は  
+その挙動を`attributeChangedCallback`に、ウォッチするプロパティを  
+`observedAttributes`に定義しておきます。
+
+<div class="highlight"><pre class="highlight"><code>const prices = {
+  t_porsche: '66,00 €',
+  t_fendt: '54,00 €',
+  t_eicher: '58,00 €',
+};
+
+class BlueBuy extends HTMLElement {
+  static get observedAttributes() {
+    return ['sku'];
+  }
+  constructor() {
+    super();
+    this.render();
+  }
+  render() {
+    const sku = this.getAttribute('sku');
+    const price = prices[sku];
+    this.innerHTML = `&lt;button type="button"&gt;buy for ${price}&lt;/button&gt;`;
+  }
+  attributeChangedCallback(attr, oldValue, newValue) {
+    this.render();
+  }
+  disconnectedCallback() {...}
+}
+window.customElements.define('blue-buy', BlueBuy);
+</code></pre></div>
+
+コードの重複を避けるために、`render()`メソッドが定義されてます(`constructor`と`attributeChangedCallback`から呼び出されます)。  
+このメソッドは再描画に必要な情報を集めてきます。  
+Custom Element内でテンプレートエンジンやライブラリを使う場合に  
+初期化コードを書くのもこの`render()`内部です。
