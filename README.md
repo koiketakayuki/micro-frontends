@@ -126,3 +126,15 @@ Progressive EnhancementやUniversal Rendering、ルーティングなどを実�
 さらに上部にはバスケットの状態に応じて表示が切り替わる**ミニバスケット**がついています。  
 
 ![Base Protptype](https://micro-frontends.org//ressources/video/model-store-0.gif)
+
+[ブラウザで試す](https://micro-frontends.org/0-model-store/)&[Github](https://github.com/neuland/micro-frontends/tree/master/0-model-store)
+
+すべてのHTMLはクライアントサイドで  
+jsとes6のテンプレートストリングを使って生成されています。  
+他になんの依存もありません。  
+単にマークアップと状態を分離して、何か変更があった際にはすべてのHTMLを再描画してるだけです。  
+DOMの変更分だけを再描画したり、Universal Renderingといったものは今は使われていません。  
+また、タスクをチームごとに分割といったこともしていません。ひとつのjs/cssにすべてが書かれています。
+
+
+
