@@ -95,7 +95,7 @@ CustomElementはその技術の実装を隠して、技術に依存しないイ�
 
 Custom Elementsはブラウザにアプリを統合するのに役立ちます。  
 それぞれのチームは選択したフレームワークを用いて、コンポーネントを実装して  
-それをCustom Elementの中に隠蔽します。(例: <order-minicart></order-minicart>)  
+それをCustom Elementの中に隠蔽します。(例: `<order-minicart></order-minicart>`)  
 このタグの名前が他のチームがコンポーネントを使う際のAPIとしての役割を果たします。  
 こうすることで、このコンポーネントがどんなライブラリを使って作られたのかを知る必要なしに使えます。  
 ただDOMとやりとりすればいいのです。
