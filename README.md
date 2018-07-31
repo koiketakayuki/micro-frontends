@@ -35,7 +35,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 
 視野を広げるため、[Alan Balkan](https://ar.al/)の書いた[「Documents‐to‐Applications Continuum」](https://2018.ar.al/notes/the-documents-to-applications-continuum/)を紹介します。
 
-彼が考え出し、このWebサイトの指標は  
+彼が考えたこのWebサイトの指標は  
 左側に行くほどリンクや文字のような静的なものを  
 右側に行くほど写真の編集ツールのような動的なものを  
 配置するというものでした。 
