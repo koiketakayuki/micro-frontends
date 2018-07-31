@@ -246,3 +246,10 @@ Custom Element内でテンプレートエンジンやライブラリを使う場
 ただし`document-register-element` に関して言えば主要ブラウザで動かすためにpolyfillが必要です。  
 Custom Element内部では[ほとんどのブラウザでサポートされている](https://caniuse.com/#feat=mutationobserver)Mutation Observer APIを使っているため
 裏側でトリッキーなDOMの変更検知をしている、といったことはありません。
+
+### フレームワーク対応
+Custom ElementはWeb標準なのでAngular, React, Preact, Vue, Hyperappなど  
+主要なjsフレームワークはこれをサポートしています。  
+しかし細かい点を見ると、対応できていなかったり、バグがあったりします。  
+[Custom Elements Everywhere Rob Dodson](https://custom-elements-everywhere.com/)では  
+これらの問題をまとめてくれています
