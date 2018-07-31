@@ -233,7 +233,16 @@ class BlueBuy extends HTMLElement {
 window.customElements.define('blue-buy', BlueBuy);
 </code></pre></div>
 
-コードの重複を避けるために、`render()`メソッドが定義されてます(`constructor`と`attributeChangedCallback`から呼び出されます)。  
+コードの重複を避けるために、`render()`メソッドが定義されてます  
+(`constructor`と`attributeChangedCallback`から呼び出されます)。  
 このメソッドは再描画に必要な情報を集めてきます。  
 Custom Element内でテンプレートエンジンやライブラリを使う場合に  
 初期化コードを書くのもこの`render()`内部です。
+
+### ブラウザサポート
+
+上の例で使われているCustom ElementはCustom Element V1 Specに基づいています。  
+これはChromeとSafariとOperaでサポートされています。  
+ただし`document-register-element` に関して言えば主要ブラウザで動かすためにpolyfillが必要です。  
+Custom Element内部では[ほとんどのブラウザでサポートされている](https://caniuse.com/#feat=mutationobserver)Mutation Observer APIを使っているため
+裏側でトリッキーなDOMの変更検知をしている、といったことはありません。
