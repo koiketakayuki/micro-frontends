@@ -318,7 +318,8 @@ Eventは常にそれが発火された、もしくは渡された場所と紐づ
 この方法ではミニバスケットコンポーネントは外部の`window`にリスナーを追加します。  
 多くのアプリケーションでは大丈夫なはずですが  
 もしあなたがこの方法を気持ち悪いと思うのなら  
-ページがコンポーネントの変更を検知してミニバスケットの`refresh()`メソッドを呼び出すことで
+ページがコンポーネントの変更を検知して  
+ミニバスケットの`refresh()`メソッドを呼び出すことで
 再描画する、という書き方も可能です。  
 
 <pre class="highlight"><code>// page.js
@@ -333,3 +334,16 @@ DOMのメソッドを呼び出すということは普通はやりませんが
 [video-elemt api](https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback)ではよく使われます。  
 
 可能なら宣言的な方法(属性が変わった際に自動で更新される方法)の方が望ましいでしょう。
+
+## サーバーサイドレンダリング/ユニバーサルレンダリング
+
+Custom Elementはコンポーネントとブラウザを統合するすばらしい技術ですが
+初期描画が遅いという欠点があります。  
+ユーザーはすべてのjavascriptがロードして実行されるまで  
+白い画面を見続けることになるでしょう。  
+javascriptがロードや実行に失敗したら何が起こるかを  
+考えるのは良いことです。
+
+[Jeremy Keith](https://adactio.com/)がebookもしくはpodcastで[Resilient Web Design](https://resilientwebdesign.com/)をこのことについてまとめいています。
+
+
