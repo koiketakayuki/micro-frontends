@@ -454,7 +454,7 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 ![data-fetching-reflow](https://micro-frontends.org/ressources/video/data-fetching-reflow.gif)
 
 このようにしたコンポーネントの描画はブラウザでのみ行われます。  
-アニメーションを見てわかる通り、描画する際にはブラウザ内で**スタイルの再計算(Reflow)** が行われます。  
+アニメーションを見てわかる通り、描画する際にはブラウザ内で**スタイルの再計算** が行われます。  
 レコメンドの部分は最初はブランクで、APIにリクエストして緑チームのコンポーネントを取得した後で描画されます。  
 この時はより多くのスペースが必要になるので、ページのレイアウトを変える必要があります。  
 
@@ -467,18 +467,18 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 赤チームは枠の高さを調整しなくてはなりません。  
 レイアウトが壊れないように両チームが同時に調整する必要が生まれてしまいます。  
 
-ベターな方法は(Skelton Screens)[https://blog.prototypr.io/luke-wroblewski-introduced-skeleton-screens-in-2013-through-his-work-on-the-polar-app-later-fd1d32a6a8e7]と呼ばれる方法を使うことです。  
+ベターな方法は[Skelton Screens](https://blog.prototypr.io/luke-wroblewski-introduced-skeleton-screens-in-2013-through-his-work-on-the-polar-app-later-fd1d32a6a8e7)と呼ばれる方法を使うことです。  
 赤チームは`green-recos` コンポーネントのSSIをそのままにしておきます。  
 さらに緑チームはサーバーサイドレンダリングの描画メソッドを、コンポーネントの中身ではなく  
 その**コンテンツのスケルトン**に置き換えます。  
-この**Skelton markup**を使うことででは、本物のコンテンツのレイアウトを使いまわせます。
+このスケルトンを使うことででは、本物のコンテンツのレイアウトを使いまわせます。
 この方法なら、**最初にスペースが確保され** 、実際の描画時にガクガク動くことはなくなります。
 
 ![skelton](https://micro-frontends.org/ressources/video/data-fetching-skeleton.gif)
 
 **Skelton screensはクライアントサイドでも役立ちます。**  
 ユーザーがなんらかのアクションに対して、カスタムエレメントを差し込む場合などは  
-とりあえずSkelton markupを表示しておいて、データがきたら本当のコンポーネントを表示する  
+とりあえずスケルトンを表示しておいて、データがきたら本当のコンポーネントを表示する  
 といった使い方が可能です。  
 
 属性の変更のような簡単な場合でもスケルトンを表示するかどうかを選べます。  
