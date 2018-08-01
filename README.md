@@ -27,8 +27,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 
 
 ## モダンなWebアプリとは
-前文で「モダンなウェブアプリ」という言葉を使いましたが、
-それに関わる用語を定義しましょう。
+前文で「モダンなウェブアプリ」という言葉を使いましたが、その意味をはっきりさせておきましょう。
 
 視野を広げるため、[Alan Balkan](https://ar.al/)の書いた[「Documents‐to‐Applications Continuum」](https://2018.ar.al/notes/the-documents-to-applications-continuum/)を紹介します。
 
