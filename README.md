@@ -359,16 +359,112 @@ javascriptがロードや実行に失敗したら何が起こるかを
 &lt;button type="button"&gt;buy for 66,00 €&lt;/button&gt;
 </code></pre></div>
 
-Custom Elementのコンポーネントの名前はURLのパスとして使用されています。  
-属性はGETパラメータとして渡されます。  
-こうすることですべてのコンポーネントをサーバーサイドレンダリングすることが可能です。  　
-
-以下の`<blue-buy>` の例は**Universal Web Component**とほとんど同じことができます。  
+Custom Elementのタグの名前はURLのパスとして、属性はGETパラメータとして表現されます。  
+この方法は、すべてのコンポーネントをサーバーサイドレンダリングすることが可能で  
+**Universal Web Component**にかなり近いものが実現できます。  
 
 <pre class="highlight"><code>&lt;blue-buy sku="t_porsche"&gt;
   &lt;!--#include virtual="/blue-buy?sku=t_porsche" --&gt;
 &lt;/blue-buy&gt;
 </code></pre>
 
+`#include` コメントは[Server Side Includes](https://en.wikipedia.org/wiki/Server_Side_Includes)です。  
+これは昔のWebサイトで現在の時間を表示するのに用いられたテクニックと全く同じです。  
+他にも色々な方法([ESI](https://en.wikipedia.org/wiki/Edge_Side_Includes),[nodesi](https://github.com/Schibsted-Tech-Polska/nodesi), [compoxure](https://github.com/tes/compoxure), [tailor](https://github.com/zalando/tailor))がありますが、SSIが最もシンプルで安定している方法です。  
 
+`#include` コメントはサーバーがページ全体を送信する前に、`/blue-buy?sku=t_porsche` の中身に置き換えられます。  
+この時のnginxの設定ファイルは以下のようになります。  
+
+<pre class="highlight"><code>upstream team_blue {
+  server team_blue:3001;
+}
+upstream team_green {
+  server team_green:3002;
+}
+upstream team_red {
+  server team_red:3003;
+}
+
+server {
+  listen 3000;
+  ssi on;
+
+  location /blue {
+    proxy_pass  http://team_blue;
+  }
+  location /green {
+    proxy_pass  http://team_green;
+  }
+  location /red {
+    proxy_pass  http://team_red;
+  }
+  location / {
+    proxy_pass  http://team_red;
+  }
+}
+</code></pre>
+
+
+
+`ssi: on;` の部分でSSIを許可しています。  
+また`upstream` と`location` の部分でそれぞれのチームにURLを割り当てています。  
+例えば`/blue` で始まるURLは青チームのサーバー(team_blue:3001)にマッピングされます。  
+またルートページ(`/` )はページ全体の担当である赤チームのサーバーが割り当てられています。  
+
+以下のアニメーションはjsを無効化した例です。  
+![js-diabled](https://micro-frontends.org/ressources/video/server-render.gif)
+
+[github](https://github.com/neuland/micro-frontends/tree/master/2-composition-universal)  
+  
+トラクターの切り替えセレクターはただのリンクでクリックする度にページがリロードされます。  
+右側のコンソールはリクエストがどのように処理されているかを示しています。  
+まず赤チームが担当するページ全体のURLが読み込まれ、その後に青チームと緑チームが作ったコンポーネントが  
+読み込まれています。  
+  
+jsを有効にすると、最初のページ全体のロードだけが行われます。  
+トラクターの切り替えは一番最初の例と同じように、クライアントサイドで行われます。  
+
+サンプルコードをローカルマシンで試せます。  
+(docker-composeをインストールする必要があります)  
+
+<pre class="highlight"><code>git clone https://github.com/neuland/micro-frontends.git
+cd micro-frontends/2-composition-universal
+docker-compose up --build
+</code></pre>
+
+DockerはNginxを3000ポートで起動して、さらにそれぞれのチームのサーバーのイメージを起動します。  
+`http://127.0.0.1:3000/`にアクセスすると赤のトラクターが表示されます。  
+docker-composeのログはネットワークで何が起こっているのかを分かりやすくしてくれます。  
+残念ながらログの色のしてはできないので、青チームが緑色で表示されるかもしれませんが。  
+
+ソースコード内の`src` ディレクトリはそれぞれのチームのコンテナにマッピングされています。  
+`src`ディレクトリ内のコードに変更があると、そのサーバーは再起動されます。  
+自由に中のコードを変えて遊んでみてください。  
+
+#### Data Fetching & Loading States
+
+SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがページ全体の描画パフォーマンスのボトルネックになる**ことです。  
+だから、それぞれのコンポーネントをキャッシュすることがとても大切です。  
+描画に時間がかかるし、キャッシュもできないようなコンポーネントは初期描画から外すことも検討しましょう。  
+ブラウザから非同期で取得して描画する方が良いかもしれません。  
+緑チーム担当の`green-recos` はこの方法を使う候補になります。  
+
+単にSSIを外せば、これを実現できます。    
+
+##### Before
+
+<pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;
+  &lt;!--#include virtual="/green-recos?sku=t_porsche" --&gt;
+&lt;/green-recos&gt;
+</code></pre>
+
+##### After
+
+<pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;&lt;/green-recos&gt;
+</code></pre>
+
+重要事項として、Custome Elementは[self-closing](https://developers.google.com/web/fundamentals/web-components/customelements#jsapi)ができません。  
+そのため`<green-recos sku="t_porsche" />` とした場合は正しく動作しない可能性があります。  
+
+[data-fetching-reflow]((https://micro-frontends.org/ressources/video/data-fetching-reflow.gif)
 
