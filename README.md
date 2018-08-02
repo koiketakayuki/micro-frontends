@@ -508,13 +508,13 @@ neuland Büro für Informatikで働くソフトウェアエンジニア。
 E-コマースのよりよいフロントエンドを追及している。  
 
 ## 原文
-<a href="https://micro-frontends.org">Micro Frontends</a>
+<a href="https://micro-frontends.org">Micro Frontends</a>  
 なお、原文のページはGithub Pagesでホスティングされています。  
 ソースコードは<a href="https://github.com/neuland/micro-frontends/" targe="_blank">こちら</a>で見ることができます。
 
 ## 訳者
-**小池貴之** (@koiketakayuki)
-ふつうのソフトウェアエンジニア(<a href="https://github.com/koiketakayuki">Github</a>)
+**小池貴之** (@koiketakayuki)  
+プログラムが好きなプログラマ(<a href="https://github.com/koiketakayuki">Github</a>)  
 
 なお、翻訳版のサイトもGithub Pagesでホスティングされています。  
 ソースコードは<a href="https://github.com/koiketakayuki/micro-frontends/" targe="_blank">こちら</a>で見ることができます。  
