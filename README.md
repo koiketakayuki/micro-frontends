@@ -504,7 +504,7 @@ APIがすぐにレスポンスを返した場合には、UIがちかちかして
 ユーザーのフィードバックをもらいながら賢く実装していきましょう。  
 
 ## 著者
-**Michael Geers** (@naltatis)  
+**Michael Geers** (<a href="https://twitter.com/naltatis" target="_blank">@naltatis</a>)  
 neuland Büro für Informatikで働くソフトウェアエンジニア。  
 E-コマースのよりよいフロントエンドを追及している。  
 
