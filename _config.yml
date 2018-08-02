@@ -1,0 +1,8 @@
+theme: jekyll-theme-architect
+show_downloads: false
+title: "マイクロフロントエンド"
+description: "[翻訳記事]マイクロサービスのフロントエンドへの応用"
+google-analytics: UA-123245291-1
+github:
+  is_project_page: true
+  repository_url: https://github.com/koiketakayuki/micro-frontends
