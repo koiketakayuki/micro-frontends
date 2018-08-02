@@ -500,3 +500,21 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 APIがすぐにレスポンスを返した場合には、UIがちかちかしてしまいます。  
 データを取得しても、しばらくスケルトンを表示しておくなど  
 ユーザーのフィードバックをもらいながら賢く実装していきましょう。  
+
+## 著者
+**Michael Geers** (@naltatis)  
+neuland Büro für Informatikで働くソフトウェアエンジニア。  
+E-コマースのよりよいフロントエンドを追及している。  
+
+## 原文
+<a href="https://micro-frontends.org">Micro Frontends</a>
+なお、原文のページはGithub Pagesでホスティングされています。  
+ソースコードは<a href="https://github.com/neuland/micro-frontends/" targe="_blank">こちら</a>で見ることができます。
+
+## 訳者
+**小池貴之** (@koiketakayuki)
+ふつうのソフトウェアエンジニア
+
+なお、翻訳版のサイトもGithub Pagesでホスティングされています。
+ソースコードは<a href="https://github.com/koiketakayuki/micro-frontends/" targe="_blank">こちら</a>で見ることができます。
+修正等がありましたら、Pull RequestやIssue、もしくはメールで連絡を頂けると助かります。
