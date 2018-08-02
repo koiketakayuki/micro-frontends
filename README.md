@@ -1,6 +1,6 @@
 
 この記事は翻訳記事です。  
-原著者の許可をとって翻訳・掲載しています。  
+<a href="https://github.com/naltatis" target="_blank">原著者</a>の許可をとって翻訳・掲載しています。  
 原文は<a href="https://micro-frontends.org" target="_blank">こちら</a>です。  
 
 ---
