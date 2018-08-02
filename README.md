@@ -19,12 +19,11 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 
 ##### モノリシックなフロントエンド
 
-![Frontend Monolith](https://micro-frontends.org/ressources/diagrams/organisational/monolith-frontback-microservices.png)
+![Frontend Monolith](https://micro-frontends-japanese.org/resources/monolith-frontback-microservices.png)
 
 ##### マイクロフロントエンド
 
-![Frontend Monolith](https://micro-frontends.org/ressources/diagrams/organisational/verticals-headline.png)
-
+![Frontend Monolith](https://micro-frontends-japanese.org/resources/verticals-headline.png)
 
 ## モダンなWebアプリとは
 前文で「モダンなウェブアプリ」という言葉を使いましたが、その意味をはっきりさせておきましょう。
@@ -118,14 +117,14 @@ jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込
 また、クリックすると選択されているトラクターをバスケットにいれる**購入ボタン**があります。  
 さらに上部にはバスケットの状態に応じて表示が切り替わる**ミニバスケット**がついています。  
 
-![Base Protptype](https://micro-frontends.org//ressources/video/model-store-0.gif)
+![Base Protptype](https://micro-frontends-japanese.org/resources/model-store-0.gif)
 
 [ブラウザで試す](https://micro-frontends.org/0-model-store/)&[Github](https://github.com/neuland/micro-frontends/tree/master/0-model-store)
 
 すべてのHTMLはクライアントサイドでjsとes6のテンプレートを使って生成されています。  
 何のライブラリも使っていません。  
 マークアップと状態を分離して、何か変更があった際にはすべてのHTMLを再描画してるだけです。  
-DOMの変更分だけを再描画したり、サーバーサイドレンダリングといったものもありません。
+DOMの変更分だけを再描画したり、サーバーサイドレンダリングといったものもありません。  
 また、タスクをチームごとに分割といったこともしていません。ひとつのjs/cssにすべてが書かれています。
 
 ### クライアントサイドとの統合
@@ -134,7 +133,7 @@ DOMの変更分だけを再描画したり、サーバーサイドレンダリ�
 **Inspireチーム(緑)** はこのページのレコメンドを担当します。  
 **Productチーム(赤)** ページ全体を担当します。どの機能が必要で、どこに置くかを決めます。  
 
-![Client-side integration](https://micro-frontends.org/ressources/screen/three-teams.png)
+![Client-side integration](https://micro-frontends-japanese.org/resources/three-teams.png)
 
 [ブラウザで試す](https://micro-frontends.org/1-composition-client-only/)&[Github](https://github.com/neuland/micro-frontends/tree/master/1-composition-client-only)
 
@@ -162,7 +161,7 @@ window.customElements.define('blue-buy', BlueBuy);
 `this`は定義されたCustomElement自身への参照を表します。  
 `innerHTML`や`getAttributes()`といったDOMのプロパティは、すべて使用可能です。  
 
-![Custom-Element](https://micro-frontends.org/ressources/video/custom-element.gif)
+![Custom-Element](https://micro-frontends-japanese.org/resources/custom-element.gif)
 
 コンポーネントの名前に関するルールが一つだけあります。  
 HTMLの互換性を保つためにコンポーネント名に`-`を含まなければなりません。  
@@ -192,7 +191,7 @@ container.innerHTML = '&lt;blue-buy sku="t_fendt"&gt;&lt;/blue-buy&gt;';
 もしコンポーネント内でReactのようなDOMの変更を検知するフレームワークを使っていた場合は  
 内部で自動的に再描画されます。
 
-![Custom-Element rerender](https://micro-frontends.org/ressources/video/custom-element-attribute.gif)
+![Custom-Element rerender](https://micro-frontends-japanese.org/resources/custom-element-attribute.gif)
 
 このプロパティが書き換わった際に再描画される機能を自前で実装する時は  
 その挙動を`attributeChangedCallback`に、ウォッチするプロパティを  
@@ -396,7 +395,7 @@ server {
 またルートページ(`/`)はページ全体の担当である赤チームのサーバーが割り当てられています。  
 
 以下のアニメーションはjsを無効化した例です。  
-![js-diabled](https://micro-frontends.org/ressources/video/server-render.gif)
+![js-diabled](https://micro-frontends-japanese.org/resources/server-render.gif)
 
 [github](https://github.com/neuland/micro-frontends/tree/master/2-composition-universal)  
   
@@ -450,7 +449,7 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 重要事項として、Custome Elementは[self-closing](https://developers.google.com/web/fundamentals/web-components/customelements#jsapi)ができません。  
 そのため`<green-recos sku="t_porsche" />` とした場合は正しく動作しない可能性があります。  
 
-![data-fetching-reflow](https://micro-frontends.org/ressources/video/data-fetching-reflow.gif)
+![data-fetching-reflow](https://micro-frontends-japanese.org/resources/data-fetching-reflow.gif)
 
 このようにしたコンポーネントの描画はブラウザでのみ行われます。  
 アニメーションを見てわかる通り、描画する際にはブラウザ内で**スタイルの再計算** が行われます。  
@@ -473,7 +472,7 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 このスケルトンを使うことででは、本物のコンテンツのレイアウトを使いまわせます。
 この方法なら、**最初にスペースが確保され** 、実際の描画時にガクガク動くことはなくなります。
 
-![skelton](https://micro-frontends.org/ressources/video/data-fetching-skeleton.gif)
+![skelton](https://micro-frontends-japanese.org/resources/data-fetching-skeleton.gif)
 
 **スケルトンはクライアントサイドでも役立ちます。**  
 ユーザーのなんらかのアクションに対して、Custom Elementを差し込む場合などは  
