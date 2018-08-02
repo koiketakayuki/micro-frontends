@@ -503,6 +503,14 @@ APIがすぐにレスポンスを返した場合には、UIがちかちかして
 データを取得しても、しばらくスケルトンを表示しておくなど  
 ユーザーのフィードバックをもらいながら賢く実装していきましょう。  
 
+## 参考資料
+
++ <a href="https://www.youtube.com/watch?v=o1Sr39DVdOQ" target="_blank">トーク: Micro Frontends - YGLF, Tel Aviv 2017 </a>(<a href="https://speakerdeck.com/naltatis/micro-frontends-yglf-tel-aviv" target="_blank">スライド</a>)
+
++ <a href="https://speakerdeck.com/naltatis/micro-frontends-building-a-modern-webapp-with-multiple-teams" target="_blank">スライド: Micro Frontends - JSUnconf.eu 2017</a>
+
++ <a href="https://www.youtube.com/watch?v=W3_8sxUurzA" target="_blank">トーク: Break Up With Your Frontend Monolith</a> - JS Kongress 2017 Elisabeth Engel talks about implementing Micro Frontends at gutefrage.net
+
 ## 著者
 **Michael Geers** (<a href="https://twitter.com/naltatis" target="_blank">@naltatis</a>)  
 neuland Büro für Informatikで働くソフトウェアエンジニア。  
