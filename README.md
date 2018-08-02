@@ -135,7 +135,8 @@ javascriptの分離、CSSの衝突の避け方、コンポーネントの遅延�
 
 <a href="https://micro-frontends.org/0-model-store/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/0-model-store" target="_blank">Github</a>
 
-すべてのHTMLはクライアントサイドでjavascriptとes6のテンプレートを使って生成されていて、ライブラリは使っていません。  
+すべてのHTMLはクライアントサイドでjavascriptとes6のテンプレートを使って生成しています。  
+ライブラリは使っていません。  
 マークアップと状態を分離して、何か変更があった際にはすべてのHTMLを再描画してるだけです。  
 DOMの変更分だけを再描画したり、サーバーサイドレンダリングといったものもありません。  
 また、タスクをチームごとに分割といったこともしていません。ひとつのjs/cssにすべてが書かれています。
