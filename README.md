@@ -238,8 +238,8 @@ class BlueBuy extends HTMLElement {
 window.customElements.define('blue-buy', BlueBuy);
 </code></pre>
 
-コードの重複を避けるために、`render()`メソッドが定義されてます  
-(`constructor`と`attributeChangedCallback`から呼び出されます)。  
+コードの重複を避けるために、`render()`メソッドが定義されてます。  
+(`constructor`と`attributeChangedCallback`から呼び出されます)  
 このメソッドは再描画に必要な情報を集めてきます。  
 Custom Element内でテンプレートエンジンやライブラリを使う場合に  
 初期化コードを書くのもこの`render()`内部です。
