@@ -4,15 +4,7 @@
 @import "{{ site.theme }}";
 
 .inner {
-  max-width: 750px;
-  font-size: 1.2em;
   line-height: 1.6em;
-}
-
-@media only screen and (max-width: 767px) {
-  .inner {
-    font-size: 1.1em;
-  }
 }
 
 .inner hr {
@@ -26,6 +18,7 @@ header {
 header h1,
 header h2 {
   width: auto;
+  font-size: 54px;
 }
 
 header a.button {
