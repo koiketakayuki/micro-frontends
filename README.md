@@ -1,9 +1,10 @@
 
 ## はじめに
 
-この記事は翻訳記事です。  
+この記事は翻訳記事です。
 <a href="https://github.com/naltatis" target="_blank">原著者</a>の許可をとって翻訳・掲載しています。  
 原文は<a href="https://micro-frontends.org" target="_blank">こちら</a>です。  
+
 <a href="https://github.com/koiketakayuki">翻訳者</a>
 
 # マイクロフロントエンド
@@ -518,4 +519,4 @@ E-コマースのよりよいフロントエンドを追及している。
 
 なお、翻訳版のサイトもGithub Pagesでホスティングされています。  
 ソースコードは<a href="https://github.com/koiketakayuki/micro-frontends/" targe="_blank">こちら</a>で見ることができます。  
-修正等がありましたら、Pull RequestやIssue、もしくはメールで連絡を頂けると助かります。
+修正等がありましたら、Pull RequestかIssueもしくはメール(koike.takayuki0907@gmail.com)で連絡を頂けると助かります。
