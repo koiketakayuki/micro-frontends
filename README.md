@@ -22,7 +22,12 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 ページを独立したチームによって管理された機能の集合体と捉えることです。  
 それぞれのチームは特定の領域やミッションに特化しています。  
 チームは機能横断的な作りになっていて、その機能をend-to-end  
-つまりデータベースからUIに至るまでをすべて実装します。
+つまりデータベースからUIに至るまでをすべて実装します。  
+
+この考え方は特に新しいものではありません。  
+過去にも<a href="https://dev.otto.de/2014/07/29/scaling-with-microservices-and-vertical-decomposition/" target="_blank">Frontend Integration for Verticalised Systems</a>や<a href="http://scs-architecture.org/" target="_blank">Self-contained Systems</a>といったものがありました。  
+しかしマイクロフロントエンドは明らかにそれらの用語よりもライトでとっつきやすい考え方です。
+
 
 ##### モノリシックなフロントエンド
 
