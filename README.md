@@ -5,7 +5,7 @@
 
 ---
 
-モダンなウェブアプリを、色々な技術スタックの複数のチームで作るためのテクニック
+モダンなウェブアプリを、違うjsフレームワークを使う複数のチームで作るためのテクニック
 
 ## マイクロフロントエンドとは？
 
@@ -33,7 +33,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 ![Frontend Monolith](https://micro-frontends-japanese.org/resources/verticals-headline.png)
 
 ## モダンなWebアプリとは
-前文で「モダンなウェブアプリ」という言葉を使いましたが、その意味をはっきりさせておきましょう。
+前文で「モダンなウェブアプリ」という言葉を使いましたが、それに関わる前提をはっきりさせておきましょう。
 
 視野を広げるため、<a href="https://ar.al/" target="_blank">Alan Balkan</a>の書いた<a href="https://2018.ar.al/notes/the-documents-to-applications-continuum/" target="_blank">「Documents‐to‐Applications Continuum」</a>を紹介します。
 
@@ -74,14 +74,13 @@ CustomElementはその技術の実装を隠して、技術に依存しないイ�
 
 + チームのprefixを決める
 
-チームが上手く分離されない場合、変数やファイルのprefixを決めておきましょう。  
+チームが上手く分離されていない場合、チームごとに変数やファイルのprefixを決めておきましょう。  
 これらが使われたCSS、Event, LocalStorageやCookieは  
-誰が受け持つべきかをはっきりさせたり、衝突を避けたりするのに役立ちます。
+どのチームが受け持つべきかをはっきりさせたり、衝突を避けたりするのに役立ちます。
 
 + ブラウザネイティブのAPIを使う
 
-コンポーネント間のデータのやりとりには、グローバルなPub/Subシステムではなく  
-ブラウザネイティブのイベントを用いるましょう。  
+コンポーネント間のデータのやりとりには、できるだけブラウザネイティブのイベントを使いましょう。  
 もし自作のAPIが必要ならできるだけシンプルにしましょう。  
 
 + 不測の事態に強い(Risilientな)サイトにする
@@ -93,11 +92,11 @@ CustomElementはその技術の実装を隠して、技術に依存しないイ�
 
 ## DOMがAPIになる
 
-Custom Elementはブラウザにアプリを統合するのに役立ちます。  
+Custom Elementはアプリケーションをブラウザに統合するのに役立ちます。  
 それぞれのチームは選択したフレームワークを用いて、コンポーネントを実装して  
 それをCustom Elementの中に隠蔽します。(例: `<order-minicart></order-minicart>`)  
 このタグの名前が他のチームがコンポーネントを使う際のAPIとしての役割を果たします。  
-こうすることで、このコンポーネントがどんなライブラリを使って作られたのかを知る必要なしに使えます。  
+こうすることで、このコンポーネントがどんなライブラリを使って作られたのかを知る必要なく使えます。  
 ただDOMとやりとりすればいいのです。
 
 しかし、Custom Elementだけではすべての問題を解決できません。  
@@ -108,7 +107,7 @@ Progressive Enhancementやサーバーサイドレンダリング、ルーティ
 最初にページの組み立て(どのような別々のチームに実装されたコンポーネントを組み合わせるか)について、  
 次にクライアントサイドでのページ遷移の例を説明します。
 
-## ページの組み立て(Page Composition)
+## ページの組み立て
 
 色んなフレームワークで書かれたコードを、クライアントとサーバー両方に統合する以外にも  
 jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込み、チーム間のリソース共有、  
@@ -128,8 +127,7 @@ jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込
 
 <a href="https://micro-frontends.org/0-model-store/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/0-model-store" target="_blank">Github</a>
 
-すべてのHTMLはクライアントサイドでjsとes6のテンプレートを使って生成されています。  
-何のライブラリも使っていません。  
+すべてのHTMLはクライアントサイドでjsとes6のテンプレートを使って生成されていて、ライブラリは使っていません。  
 マークアップと状態を分離して、何か変更があった際にはすべてのHTMLを再描画してるだけです。  
 DOMの変更分だけを再描画したり、サーバーサイドレンダリングといったものもありません。  
 また、タスクをチームごとに分割といったこともしていません。ひとつのjs/cssにすべてが書かれています。
@@ -138,14 +136,14 @@ DOMの変更分だけを再描画したり、サーバーサイドレンダリ�
 以下の例では、ページを３つのコンポーネントに分離して、それぞれの実装をチームごとにアサインします。  
 **Checkoutチーム(青)** は購入に関するすべてのプロセスを担当します。ここでは購入ボタンとミニバスケットです。  
 **Inspireチーム(緑)** はこのページのレコメンドを担当します。  
-**Productチーム(赤)** ページ全体を担当します。どの機能が必要で、どこに置くかを決めます。  
+**Productチーム(赤)** はページ全体を担当します。どの機能が必要で、どこに置くかを決めます。  
 
 ![Client-side integration](https://micro-frontends-japanese.org/resources/three-teams.png)
 
 <a href="https://micro-frontends.org/1-composition-client-only/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/1-composition-client-only" target="_blank">Github</a>
 
 
-ページはProductチームが決めた商品名や画像などを表示しますが
+ページはProductチームが決めた商品名や画像などを表示しますが  
 それだけでなく他のチームが作ったコンポーネントも含まれます。
 
 #### Custom Elementの作り方
