@@ -1,14 +1,72 @@
+---
+---
+
 @import "{{ site.theme }}";
 
-header h1 {
-  font-size: 64px;
-  width: 100%;
+.inner {
+  max-width: 750px;
+  font-size: 1.2em;
+  line-height: 1.6em;
 }
 
+@media only screen and (max-width: 767px) {
+  .inner {
+    font-size: 1.1em;
+  }
+}
+
+.inner hr {
+  margin: 3em 0;
+}
+
+header {
+  font-family: 'Handlee', cursive;
+  font-weight: normal;
+}
+
+header h1,
 header h2 {
-  width: 100%;
+  width: auto;
 }
 
-#main-content {
-  width: 100%;
+header a.button {
+  padding-top: 5px;
+  font-family: 'Handlee', cursive;
+}
+
+#main-content,
+aside#sidebar {
+  float: none;
+  width: auto;
+}
+
+aside#sidebar {
+  background: none;
+  border-top: 1px solid #ccc;
+  margin-top: 3em;
+  padding-top: 3em;
+}
+
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4 {
+  font-family: 'Handlee', cursive;
+  font-weight: normal;
+}
+
+#main-content h2 {
+  font-size: 26px;
+  margin: 2em 0 0.5em;
+}
+
+#main-content h3 {
+  font-size: 22px;
+  margin: 2em 0 0.5em;
+}
+
+@media only screen and (min-width: 767px) {
+  header a.button {
+    background: none;
+  }
 }
