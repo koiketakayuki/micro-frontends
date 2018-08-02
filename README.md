@@ -5,7 +5,7 @@
 
 ---
 
-モダンなウェブアプリを、違うjsフレームワークを使う複数のチームで作るためのテクニック
+モダンなウェブアプリを、違うjavascriptフレームワークを使う複数のチームで作るためのテクニック
 
 ## マイクロフロントエンドとは？
 
@@ -115,7 +115,7 @@ Progressive Enhancementやサーバーサイドレンダリング、ルーティ
 ## ページの組み立て
 
 色んなフレームワークで書かれたコードを、クライアントとサーバー両方に統合する以外にも  
-jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込み、チーム間のリソース共有、  
+javascriptの分離、CSSの衝突の避け方、コンポーネントの遅延読み込み、チーム間のリソース共有、  
 データ取得、ローディングなど議論すべきことたくさんがあります。  
 これらのトピックを一度にまとめて紹介します。
 
@@ -132,7 +132,7 @@ jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込
 
 <a href="https://micro-frontends.org/0-model-store/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/0-model-store" target="_blank">Github</a>
 
-すべてのHTMLはクライアントサイドでjsとes6のテンプレートを使って生成されていて、ライブラリは使っていません。  
+すべてのHTMLはクライアントサイドでjavascriptとes6のテンプレートを使って生成されていて、ライブラリは使っていません。  
 マークアップと状態を分離して、何か変更があった際にはすべてのHTMLを再描画してるだけです。  
 DOMの変更分だけを再描画したり、サーバーサイドレンダリングといったものもありません。  
 また、タスクをチームごとに分割といったこともしていません。ひとつのjs/cssにすべてが書かれています。
@@ -250,7 +250,7 @@ Custom Element内部では<a href="https://caniuse.com/#feat=mutationobserver" t
 
 ### フレームワーク対応
 Custom ElementはWeb標準なのでAngular, React, Preact, Vue, Hyperappなど  
-主要なjsフレームワークはこれをサポートしています。  
+主要なjavascriptフレームワークはこれをサポートしています。  
 しかし細かい点を見ると、対応できていなかったり、バグがあったりします。  
 <a href="https://custom-elements-everywhere.com/" target="_blank">Custom Elements Everywhere Rob Dodson</a>では  
 これらの問題をまとめてくれています。
@@ -333,7 +333,7 @@ DOMのメソッドを呼び出すということは普通はやりませんが
 
 可能なら宣言的な方法(属性が変わった際に自動で更新される方法)の方が望ましいでしょう。
 
-## サーバーサイドレンダリング/ユニバーサルレンダリング
+## サーバーサイドレンダリング
 
 Custom Elementはコンポーネントとブラウザを統合するすばらしい技術ですが初期描画が遅いという欠点があります。  
 ユーザーはすべてのjavascriptがロードして実行されるまで、白い画面を見続けることになるでしょう。  
@@ -408,7 +408,7 @@ server {
 例えば`/blue` で始まるURLは青チームのサーバー(team_blue:3001)にマッピングされます。  
 またルートページ(`/`)はページ全体の担当である赤チームのサーバーが割り当てられています。  
 
-以下のアニメーションはjsを無効化した例です。  
+以下のアニメーションはjavascriptを無効化した例です。  
 ![js-diabled](https://micro-frontends-japanese.org/resources/server-render.gif)
 
 <a href="https://github.com/neuland/micro-frontends/tree/master/2-composition-universal" target="_blank">github</a>  
@@ -418,7 +418,7 @@ server {
 まず赤チームが担当するページ全体のURLが読み込まれ  
 その後に青チームと緑チームが作ったコンポーネントが読み込まれています。  
   
-jsを有効にすると、最初のページ全体のロードだけが行われます。  
+javascriptを有効にすると、最初のページ全体のロードだけが行われます。  
 トラクターの切り替えは一番最初の例と同じように、クライアントサイドで行われます。  
 
 このサンプルコードはローカルマシンで試せます。  
