@@ -509,15 +509,15 @@ APIがすぐにレスポンスを返した場合には、UIがちかちかして
 
 + <a href="https://speakerdeck.com/naltatis/micro-frontends-building-a-modern-webapp-with-multiple-teams" target="_blank">スライド: Micro Frontends - JSUnconf.eu 2017</a>
 
-+ <a href="https://www.youtube.com/watch?v=W3_8sxUurzA" target="_blank">トーク: Break Up With Your Frontend Monolith</a> - JS Kongress 2017 Elisabeth Engel talks about implementing Micro Frontends at gutefrage.net
++ <a href="https://www.youtube.com/watch?v=W3_8sxUurzA" target="_blank">トーク: Break Up With Your Frontend Monolith</a> - JS Kongress 2017 Elisabeth Engel マイクロフロントエンドがgutefrage.netの実装でどのように実現されたか
 
-+ <a href="https://medium.com/@tomsoderlund/micro-frontends-a-microservice-approach-to-front-end-web-development-f325ebdadc16" target="_blank">記事: Micro frontends - a microservice approach to front-end web development</a> Tom Söderlund explains the core concept and provides links on this topic
++ <a href="https://medium.com/@tomsoderlund/micro-frontends-a-microservice-approach-to-front-end-web-development-f325ebdadc16" target="_blank">記事: Micro frontends - a microservice approach to front-end web development</a> Tom Söderlund マイクロフロントエンドの主要コンセプトと、リンク集
 
-+ <a href="http://www.agilechamps.com/microservices-to-micro-frontends/" target="_blank">記事: Microservices to Micro-Frontends</a> Sandeep Jain summarizes the key principals behind microservices and micro frontends
++ <a href="http://www.agilechamps.com/microservices-to-micro-frontends/" target="_blank">記事: Microservices to Micro-Frontends</a> Sandeep Jain マイクロサービス・マイクロフロントエンドの主要コンセプトがまとめられている
 
-+ <a href="https://micro-frontends.zeef.com/elisabeth.engel?ref=elisabeth.engel&share=ee53d51a914b4951ae5c94ece97642fc">Link Collection: Micro Frontends by Elisabeth Engel</a> extensive list of posts, talks, tools and other resources on this topic
++ <a href="https://micro-frontends.zeef.com/elisabeth.engel?ref=elisabeth.engel&share=ee53d51a914b4951ae5c94ece97642fc">リンク集: Micro Frontends by Elisabeth Engel</a> マイクロフロントエンド関連の記事、トーク、ツール、その他のリソースがまとまったリスト
 
-+ <a href="https://custom-elements-everywhere.com/" target="_blank">Custom Elements Everywhere</a> Making sure frameworks and custom elements can be BFFs
++ <a href="https://custom-elements-everywhere.com/" target="_blank">Custom Elements Everywhere</a> Custom Elementとフレームワークが一緒に問題なく動くかのチェックができる
 
 + トラクターは<a href="https://www.manufactum.com/">ここ</a>で買えます。なおこのサイトは、この記事で紹介されているテクニックを用いた2つのチームによって実装されています
 
