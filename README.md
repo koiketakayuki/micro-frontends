@@ -9,7 +9,7 @@
 
 ## マイクロフロントエンドとは？
 
-マイクロフロントエンドという言葉は2016年の終わりに[ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar/techniques/micro-frontends)で言及されました。  
+マイクロフロントエンドという言葉は2016年の終わりに<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">ThoughtWorks Technology Radar</a>で言及されました。  
 それはマイクロサービスの考え方をフロントエンドに拡張したものです。  
 現在のWebのトレンドは、多機能でパワフルなSPAです。  
 SPAはフロントエンドとバックエンドを切り離すという、マイクロサービスの考え方に基づいています。
@@ -35,7 +35,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 ## モダンなWebアプリとは
 前文で「モダンなウェブアプリ」という言葉を使いましたが、その意味をはっきりさせておきましょう。
 
-視野を広げるため、[Alan Balkan](https://ar.al/)の書いた[「Documents‐to‐Applications Continuum」](https://2018.ar.al/notes/the-documents-to-applications-continuum/)を紹介します。
+視野を広げるため、<a href="https://ar.al/" target="_blank">Alan Balkan</a>の書いた<a href="https://2018.ar.al/notes/the-documents-to-applications-continuum/" target="_blank">「Documents‐to‐Applications Continuum」</a>を紹介します。
 
 これは左側ほどリンクや文字のような静的なものを、右側ほど写真の編集ツールのような動的なものを  
 配置するというWebサイトの指標です。
@@ -43,16 +43,16 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 もしあなたのUIがこの指標で左側寄りなら、サーバーサイドに完結しているのが良いでしょう。  
 サーバサイドで完結する場合、ページはすべてのコンポーネントのHTML文字列を集めて組み合わせるだけです。  
 コンテンツの更新はページの再読み込みか、ajaxで行われます。  
-[Gustaf Nilsson Kotte](https://twitter.com/gustaf_nk/)がこれについて[まとめた記事](https://gustafnk.github.io/microservice-websites/)を書いています。  
+<a href="https://twitter.com/gustaf_nk/" target="_blank">Gustaf Nilsson Kotte</a>がこれについて<a href="https://gustafnk.github.io/microservice-websites/" target="_blank">まとめた記事</a>を書いています。  
   
 もしあなたのUIがユーザーの動作に対してすぐにフィードバックをしてあげたいなら  
 前述のサーバーで完結しているモデルは、不十分です。  
-[Optimic UI](https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-user-interfaces/)や
-[Skelton Screens](https://micro-frontends.org/#the-dom-is-the-api)のようなテクニックを使いたいなら  
+<a href="https://www.smashingmagazine.com/2016/11/true-lies-of-optimistic-user-interfaces/" target="_blank">Optimic UI</a>や
+<a href="https://micro-frontends.org/#the-dom-is-the-api">Skelton Screens</a>のようなテクニックを使いたいなら  
 UIを**デバイス上で更新する必要があります**。  
 
 また、Googleの
-[Progressive Web Apps](https://developers.google.com/web/progressive-web-apps/)
+<a> href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>
 では高速なパフォーマンスと  
 すべての人にコンテンツを届けることの両立(Progerssive Enhancement)を説明しています。  
 このようなアプリケーションは先ほどの指標の真ん中あたりに位置しています。  
@@ -126,7 +126,7 @@ jsの分離、CSSの衝突の避け方、コンポーネントの遅延読み込
 
 ![Base Protptype](https://micro-frontends-japanese.org/resources/model-store-0.gif)
 
-[ブラウザで試す](https://micro-frontends.org/0-model-store/)&[Github](https://github.com/neuland/micro-frontends/tree/master/0-model-store)
+<a href="https://micro-frontends.org/0-model-store/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/0-model-store" target="_blank">Github</a>
 
 すべてのHTMLはクライアントサイドでjsとes6のテンプレートを使って生成されています。  
 何のライブラリも使っていません。  
@@ -142,7 +142,7 @@ DOMの変更分だけを再描画したり、サーバーサイドレンダリ�
 
 ![Client-side integration](https://micro-frontends-japanese.org/resources/three-teams.png)
 
-[ブラウザで試す](https://micro-frontends.org/1-composition-client-only/)&[Github](https://github.com/neuland/micro-frontends/tree/master/1-composition-client-only)
+<a href="https://micro-frontends.org/1-composition-client-only/" target="_blank">ブラウザで試す</a>&<a href="https://github.com/neuland/micro-frontends/tree/master/1-composition-client-only" target="_blank">Github</a>
 
 
 ページはProductチームが決めた商品名や画像などを表示しますが
@@ -242,14 +242,14 @@ Custom Element内でテンプレートエンジンやライブラリを使う場
 上の例で使われているCustom ElementはCustom Element V1 Specに基づいています。  
 これはChromeとSafariとOperaでサポートされています。  
 ただし`document-register-element` に関して言えば主要ブラウザで動かすためにpolyfillが必要です。  
-Custom Element内部では[主要ブラウザでサポートされている](https://caniuse.com/#feat=mutationobserver)Mutation Observer APIを使っているため  
+Custom Element内部では<a href="https://caniuse.com/#feat=mutationobserver" target="_blank">主要ブラウザでサポートされている</a>Mutation Observer APIを使っているため  
 裏側でトリッキーなDOMの変更検知をしている、といったことはありません。
 
 ### フレームワーク対応
 Custom ElementはWeb標準なのでAngular, React, Preact, Vue, Hyperappなど  
 主要なjsフレームワークはこれをサポートしています。  
 しかし細かい点を見ると、対応できていなかったり、バグがあったりします。  
-[Custom Elements Everywhere Rob Dodson](https://custom-elements-everywhere.com/)では  
+<a href="https://custom-elements-everywhere.com/" target="_blank">Custom Elements Everywhere Rob Dodson</a>では  
 これらの問題をまとめてくれています。
 
 ### 子 -> 親への(もしくは兄弟間)のデータのやりとり/DOMイベント
@@ -326,7 +326,7 @@ $('blue-buy')[0].addEventListener('blue:basket:changed', function() {
 </code></pre>
 
 DOMのメソッドを呼び出すということは普通はやりませんが
-[video-elemt api](https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback)ではよく使われます。  
+<a href="https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback" target="_blank">video-elemt api</a>ではよく使われます。  
 
 可能なら宣言的な方法(属性が変わった際に自動で更新される方法)の方が望ましいでしょう。
 
@@ -336,7 +336,7 @@ Custom Elementはコンポーネントとブラウザを統合するすばらし
 ユーザーはすべてのjavascriptがロードして実行されるまで、白い画面を見続けることになるでしょう。  
 javascriptがロードや実行に失敗したら何が起こるかを考えてみるのもよいでしょう。
 
-[Jeremy Keith](https://adactio.com/)が[Resilient Web Design](https://resilientwebdesign.com/)でこのことについてまとめています。
+<a href="https://adactio.com/" target="_blank">Jeremy Keith</a>が<a href="https://resilientwebdesign.com/" target="_blank">Resilient Web Design</a>でこのことについてまとめています。
 
 よって大事なコンテンツをサーバーサイドでレンダリングすることが大切になるのですが  
 悲しいことにweb componentの仕様では、サーバーサイドレンダリングに関する言及はありません。
@@ -360,9 +360,13 @@ Custom Elementのタグの名前はURLのパスとして、属性はGETパラメ
 &lt;/blue-buy&gt;
 </code></pre>
 
-`#include` コメントは[Server Side Includes](https://en.wikipedia.org/wiki/Server_Side_Includes)です。  
+`#include` コメントは<a href="https://en.wikipedia.org/wiki/Server_Side_Includes" target="_blank">Server Side Includes</a>です。  
 これは昔のWebサイトで現在の時間を表示するのに用いられたテクニックと全く同じです。  
-他にも色々な方法([ESI](https://en.wikipedia.org/wiki/Edge_Side_Includes),[nodesi](https://github.com/Schibsted-Tech-Polska/nodesi), [compoxure](https://github.com/tes/compoxure), [tailor](https://github.com/zalando/tailor))がありますが、SSIが最もシンプルで安定している方法です。  
+他にも色々な方法(
+<a href="https://en.wikipedia.org/wiki/Edge_Side_Includes" target="_blank">ESI</a>,
+<a href="https://github.com/Schibsted-Tech-Polska/nodesi" target="_blank">nodesi</a>,
+<a href="https://github.com/tes/compoxure" target="_blank">compoxure</a>,
+<a href="https://github.com/zalando/tailor" target="_blank">tailor</a>)がありますが、SSIが最もシンプルで安定している方法です。  
 
 `#include` コメントはサーバーがページ全体を送信する前に、`/blue-buy?sku=t_porsche` の中身に置き換えられます。  
 この時のnginxの設定ファイルは以下のようになります。  
@@ -404,7 +408,7 @@ server {
 以下のアニメーションはjsを無効化した例です。  
 ![js-diabled](https://micro-frontends-japanese.org/resources/server-render.gif)
 
-[github](https://github.com/neuland/micro-frontends/tree/master/2-composition-universal)  
+<a href="https://github.com/neuland/micro-frontends/tree/master/2-composition-universal" target="_blank">github</a>  
   
 トラクターの切り替えセレクターはただのリンクでクリックする度にページがリロードされます。  
 右側のコンソールはリクエストがどのように処理されているかを示しています。  
@@ -453,7 +457,7 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 <pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;&lt;/green-recos&gt;
 </code></pre>
 
-重要事項として、Custome Elementは[self-closing](https://developers.google.com/web/fundamentals/web-components/customelements#jsapi)ができません。  
+重要事項として、Custome Elementは<a href="https://developers.google.com/web/fundamentals/web-components/customelements#jsapi" target="_blank">self-closing</a>ができません。  
 そのため`<green-recos sku="t_porsche" />` とした場合は正しく動作しない可能性があります。  
 
 ![data-fetching-reflow](https://micro-frontends-japanese.org/resources/data-fetching-reflow.gif)
@@ -472,7 +476,7 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 赤チームは枠の高さを調整しなくてはなりません。  
 レイアウトが壊れないように両チームが同時に調整する必要が生まれてしまいます。  
 
-ベターな方法は[Skelton Screens](https://blog.prototypr.io/luke-wroblewski-introduced-skeleton-screens-in-2013-through-his-work-on-the-polar-app-later-fd1d32a6a8e7)と呼ばれる方法を使うことです。  
+ベターな方法は<a href="https://blog.prototypr.io/luke-wroblewski-introduced-skeleton-screens-in-2013-through-his-work-on-the-polar-app-later-fd1d32a6a8e7" target="_blank">Skelton Screens</a>と呼ばれる方法を使うことです。  
 赤チームは`green-recos` コンポーネントのSSIをそのままにしておきます。  
 さらに緑チームはサーバーサイドレンダリングの描画メソッドを
 コンポーネントの中身ではなく、その**コンテンツのスケルトン**に置き換えます。  
