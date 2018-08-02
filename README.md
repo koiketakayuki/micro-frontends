@@ -1,3 +1,6 @@
+# マイクロフロントエンド
+
+モダンなウェブアプリを、異なるjavascriptフレームワークを使う複数のチームで開発するためのテクニック
 
 ## はじめに
 
@@ -6,10 +9,6 @@
 原文は<a href="https://micro-frontends.org" target="_blank">こちら</a>です。  
 
 <a href="https://github.com/koiketakayuki">翻訳者</a>
-
-# マイクロフロントエンド
-
-モダンなウェブアプリを、異なるjavascriptフレームワークを使う複数のチームで開発するためのテクニック
 
 ## マイクロフロントエンドとは？
 
