@@ -52,7 +52,7 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 UIを**デバイス上で更新する必要があります**。  
 
 また、Googleの
-<a> href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>
+<a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a>
 では高速なパフォーマンスと  
 すべての人にコンテンツを届けることの両立(Progerssive Enhancement)を説明しています。  
 このようなアプリケーションは先ほどの指標の真ん中あたりに位置しています。  
@@ -93,7 +93,7 @@ CustomElementはその技術の実装を隠して、技術に依存しないイ�
 
 ## DOMがAPIになる
 
-Custom Elementsはブラウザにアプリを統合するのに役立ちます。  
+Custom Elementはブラウザにアプリを統合するのに役立ちます。  
 それぞれのチームは選択したフレームワークを用いて、コンポーネントを実装して  
 それをCustom Elementの中に隠蔽します。(例: `<order-minicart></order-minicart>`)  
 このタグの名前が他のチームがコンポーネントを使う際のAPIとしての役割を果たします。  
@@ -478,9 +478,9 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 
 ベターな方法は<a href="https://blog.prototypr.io/luke-wroblewski-introduced-skeleton-screens-in-2013-through-his-work-on-the-polar-app-later-fd1d32a6a8e7" target="_blank">Skelton Screens</a>と呼ばれる方法を使うことです。  
 赤チームは`green-recos` コンポーネントのSSIをそのままにしておきます。  
-さらに緑チームはサーバーサイドレンダリングの描画メソッドを
+さらに緑チームはサーバーサイドレンダリングの描画メソッドを  
 コンポーネントの中身ではなく、その**コンテンツのスケルトン**に置き換えます。  
-このスケルトンを使うことででは、本物のコンテンツのレイアウトを使いまわせます。
+このスケルトンを使うことででは、本物のコンテンツのレイアウトを使いまわせます。  
 この方法なら、**最初にスペースが確保され** 、実際の描画時にガクガク動くことはなくなります。
 
 ![skelton](https://micro-frontends-japanese.org/resources/data-fetching-skeleton.gif)
@@ -492,5 +492,5 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 
 属性の変更のような簡単な場合でもスケルトンを表示するかどうかを選べます。  
 ユーザーはスケルトンで何かが起こっているということは分かるのですが  
-APIがすぐにレスポンスを返した場合には、UIがちかちかしてしまいます。
+APIがすぐにレスポンスを返した場合には、UIがちかちかしてしまいます。  
 ユーザーのフィードバックをもらいながら賢く実装していきましょう。  
