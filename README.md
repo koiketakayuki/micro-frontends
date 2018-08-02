@@ -503,6 +503,10 @@ APIがすぐにレスポンスを返した場合には、UIがちかちかして
 データを取得しても、しばらくスケルトンを表示しておくなど  
 ユーザーのフィードバックをもらいながら賢く実装していきましょう。  
 
+## ページ間の遷移
+**To be continued...**
+そのうち書くので<a href="https://github.com/neuland/micro-frontends" targte="_blank">Githubのリポジトリ</a>をチェックしてください。
+
 ## 参考資料
 
 + <a href="https://www.youtube.com/watch?v=o1Sr39DVdOQ" target="_blank">トーク: Micro Frontends - YGLF, Tel Aviv 2017 </a>(<a href="https://speakerdeck.com/naltatis/micro-frontends-yglf-tel-aviv" target="_blank">スライド</a>)
