@@ -1,11 +1,15 @@
 
-この記事は翻訳記事です。  
-<a href="https://github.com/naltatis" target="_blank">原著者</a>の許可をとって翻訳・掲載しています。  
+## はじめに
+
+この記事は翻訳記事です。
+<a href="https://github.com/naltatis" target="_blank">原著者</a>の許可をとって翻訳・掲載しています。
 原文は<a href="https://micro-frontends.org" target="_blank">こちら</a>です。  
 
 ---
 
-モダンなウェブアプリを、違うjavascriptフレームワークを使う複数のチームで作るためのテクニック
+# マイクロフロントエンド
+
+モダンなウェブアプリを、異なるjavascriptフレームワークを使う複数のチームで開発するためのテクニック
 
 ## マイクロフロントエンドとは？
 
