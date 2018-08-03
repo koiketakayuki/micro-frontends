@@ -1,7 +1,7 @@
 theme: jekyll-theme-architect
 show_downloads: false
-title: "[翻訳記事]マイクロフロントエンド"
-description: "マイクロサービスのフロントエンドへの応用"
+title: "[翻訳記事]マイクロフロントエンド - マイクロサービスのフロントエンドへの応用"
+description: "モダンなWebアプリを異なるJavaScriptフレームワークを使う複数チームで開発するためのテクニック"
 google_analytics: UA-123245291-1
 github:
   is_project_page: true
