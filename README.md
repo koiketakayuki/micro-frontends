@@ -30,11 +30,11 @@ SPAはフロントエンドとバックエンドを切り離すという、マ�
 しかしマイクロフロントエンドは明らかにそれらの用語よりもライトでとっつきやすい概念です。
 
 
-##### モノリシックなフロントエンド
+**モノリシックなフロントエンド**
 
 ![Frontend Monolith](https://micro-frontends-japanese.org/resources/monolith-frontback-microservices.png)
 
-##### マイクロフロントエンド
+**マイクロフロントエンド**
 
 ![Frontend Monolith](https://micro-frontends-japanese.org/resources/verticals-headline.png)
 
