@@ -450,14 +450,14 @@ SSI/ESIの方法の欠点は**一番描画の遅いコンポーネントがペ�
 
 単にSSIを外せば、これを実現できます。    
 
-##### Before
+**Before**
 
 <pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;
   &lt;!--#include virtual="/green-recos?sku=t_porsche" --&gt;
 &lt;/green-recos&gt;
 </code></pre>
 
-##### After
+**After**
 
 <pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;&lt;/green-recos&gt;
 </code></pre>
