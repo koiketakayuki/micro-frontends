@@ -43,7 +43,7 @@
         <a href="{{ '/' | absolute_url }}">
           <h1>{{ site.title }}</h1>
         </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <h2>{{ site.subtitle | default: site.github.project_tagline }}</h2>
         {% if site.github.is_project_page %}
           <a href="{{ site.github.repository_url }}" class="button"><small>View project on</small> GitHub</a>
         {% endif %}
