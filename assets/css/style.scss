@@ -15,10 +15,14 @@ header {
   font-weight: normal;
 }
 
-header h1,
-header h2 {
+header h1 {
   width: auto;
   font-size: 54px;
+}
+
+header h2 {
+  width: auto;
+  font-size: 24px;
 }
 
 header a.button {
