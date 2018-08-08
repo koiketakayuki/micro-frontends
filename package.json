@@ -1,0 +1,23 @@
+{
+  "name": "micro-frontends",
+  "version": "1.0.0",
+  "description": "モダンなWebアプリを異なるJavaScriptフレームワークを使う複数チームで開発するためのテクニック",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"**/*.md\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koiketakayuki/micro-frontends.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koiketakayuki/micro-frontends/issues"
+  },
+  "homepage": "https://github.com/koiketakayuki/micro-frontends#readme",
+  "devDependencies": {
+    "prettier": "^1.14.0"
+  }
+}
