@@ -30,6 +30,24 @@ header a.button {
   font-family: 'Handlee', cursive;
 }
 
+.languages {
+  position: absolute;
+  right: -0.4em;
+  top: -2em;
+  font-size: 0.85em;
+  color: #fff;
+}
+
+.languages a,
+.languages strong {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+}
+
+.languages a {
+  color: #9ddcff;
+}
+
 #main-content,
 aside#sidebar {
   float: none;
