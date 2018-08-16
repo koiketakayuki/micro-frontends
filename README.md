@@ -159,15 +159,16 @@ DOM の変更分だけを再描画したり、サーバーサイドレンダリ�
 Product チームは、ボタンを表示したい位置に`<blue-buy sku="t_porsche"></blue-buy>`と書けばページにボタンを追加できます。  
 Checkout チームは`blue-buy`コンポーネントをこのページに登録する必要があります。
 
-<pre class="highlight"><code>class BlueBuy extends HTMLElement {
+```js
+class BlueBuy extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `&lt;button type="button"&gt;buy for 66,00 €&lt;/button&gt;`;
+    this.innerHTML = `<button type="button">buy for 66,00 €</button>`;
   }
   disconnectedCallback() { ... }
 }
 window.customElements.define('blue-buy', BlueBuy);
-</code></pre>
+```
 
 ブラウザは`blue-buy`を見つけるたびに上のコードの constructor を呼び出します。  
 `this`は定義された Custom Element 自身への参照を表します。  
@@ -187,18 +188,20 @@ window.customElements.define('blue-buy', BlueBuy);
 
 Product チームは単に古いコンポーネントを削除して、新しいものを挿入すれば十分です。
 
-<pre class="highlight"><code>container.innerHTML;
-// =&gt; &lt;blue-buy sku="t_porsche"&gt;...&lt;/blue-buy&gt;
-container.innerHTML = '&lt;blue-buy sku="t_fendt"&gt;&lt;/blue-buy&gt;';
-</code></pre>
+```js
+container.innerHTML;
+// => <blue-buy sku="t_porsche">...</blue-buy>;
+container.innerHTML = '<blue-buy sku="t_fendt"></blue-buy>';
+```
 
 削除する際に、古いコンポーネントの`disconnectedCallback`が同期的に呼び出されます。  
 その後、新しく作られたコンポーネント(t_fendt)の`constructor`が呼び出されます。
 
 よりパフォーマンスの良い方法は、`sku`プロパティを書き換えることです。
 
-<pre class="highlight"><code>document.querySelector('blue-buy').setAttribute('sku', 't_fendt');
-</code></pre>
+```js
+document.querySelector('blue-buy').setAttribute('sku', 't_fendt');
+```
 
 もしコンポーネント内で React のような DOM の変更を検知するフレームワークを使っていた場合は  
 内部で自動的に再描画されます。
@@ -209,7 +212,8 @@ container.innerHTML = '&lt;blue-buy sku="t_fendt"&gt;&lt;/blue-buy&gt;';
 その挙動を`attributeChangedCallback`に、ウォッチするプロパティを  
 `observedAttributes`に定義しておきます。
 
-<pre class="highlight"><code>const prices = {
+```js
+const prices = {
   t_porsche: '66,00 €',
   t_fendt: '54,00 €',
   t_eicher: '58,00 €',
@@ -226,7 +230,7 @@ class BlueBuy extends HTMLElement {
   render() {
     const sku = this.getAttribute('sku');
     const price = prices[sku];
-    this.innerHTML = `&lt;button type="button"&gt;buy for ${price}&lt;/button&gt;`;
+    this.innerHTML = `<button type="button">buy for ${price}</button>`;
   }
   attributeChangedCallback(attr, oldValue, newValue) {
     this.render();
@@ -234,7 +238,7 @@ class BlueBuy extends HTMLElement {
   disconnectedCallback() {...}
 }
 window.customElements.define('blue-buy', BlueBuy);
-</code></pre>
+```
 
 コードの重複を避けるために、`render()`メソッドが定義されています。  
 (`constructor`と`attributeChangedCallback`から呼び出されます)  
@@ -280,7 +284,8 @@ Event は常にそれが発火された、もしくは渡された場所と紐�
 特定の DOM のサブツリー内のすべてのイベントを検知するということも可能です。  
 以下は`blue:basket:changed`イベントを発火する例です。
 
-<pre class="highlight"><code>class BlueBuy extends HTMLElement {
+```js
+class BlueBuy extends HTMLElement {
   [...]
   connectedCallback() {
     [...]
@@ -294,18 +299,19 @@ Event は常にそれが発火された、もしくは渡された場所と紐�
     }));
   }
   render() {
-    this.innerHTML = `&lt;button type="button"&gt;buy&lt;/button&gt;`;
+    this.innerHTML = `<button type="button">buy</button>`;
   }
   disconnectedCallback() {
     this.firstChild.removeEventListener('click', this.addToCart);
   }
 }
-</code></pre>
+```
 
 このミニバスケットは`window`からイベントを購読して  
 内部のデータをリフレッシュします。
 
-<div class="highlight"><pre class="highlight"><code>class BlueBasket extends HTMLElement {
+```js
+class BlueBasket extends HTMLElement {
   connectedCallback() {
     [...]
     window.addEventListener('blue:basket:changed', this.refresh);
@@ -317,19 +323,20 @@ Event は常にそれが発火された、もしくは渡された場所と紐�
     window.removeEventListener('blue:basket:changed', this.refresh);
   }
 }
-</code></pre></div>
+```
 
 ミニバスケットコンポーネントは外部の`window`にリスナーを追加します。  
 この方法が気持ち悪ければ、ページがコンポーネントの変更を検知して  
 ミニバスケットの`refresh()`メソッドを呼び出すことで再描画する、という書き方も可能です。
 
-<pre class="highlight"><code>// page.js
+```js
+// page.js
 const $ = document.getElementsByTagName;
 
 $('blue-buy')[0].addEventListener('blue:basket:changed', function() {
   $('blue-basket')[0].refresh();
 });
-</code></pre>
+```
 
 DOM のメソッドを呼び出すということは普通はやりませんが
 <a href="https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video#Controlling_media_playback" target="_blank">video-elemt api</a>ではよく使われます。
@@ -353,18 +360,20 @@ JavaScript がロードや実行に失敗したら何が起こるかを考えて
 各チームは express サーバーからコンポーネントを配信します。  
 こうすることで、URL 経由でコンポーネントの`render()` メソッドを呼び出せます。
 
-<pre class="highlight"><code>$ curl http://127.0.0.1:3000/blue-buy?sku=t_porsche
-&lt;button type="button"&gt;buy for 66,00 €&lt;/button&gt;
-</code></pre>
+```
+$ curl http://127.0.0.1:3000/blue-buy?sku=t_porsche
+<button type="button">buy for 66,00 €</button>;
+```
 
 Custom Element のタグの名前は URL のパスとして、属性は GET パラメータとして表現されます。  
 この方法は、すべてのコンポーネントをサーバーサイドレンダリングすることが可能で  
 **Universal Web Component**にかなり近いものが実現できます。
 
-<pre class="highlight"><code>&lt;blue-buy sku="t_porsche"&gt;
-  &lt;!--#include virtual="/blue-buy?sku=t_porsche" --&gt;
-&lt;/blue-buy&gt;
-</code></pre>
+```xml
+<blue-buy sku="t_porsche">
+  <!--#include virtual="/blue-buy?sku=t_porsche" -->
+</blue-buy>
+```
 
 `#include` コメントは<a href="https://en.wikipedia.org/wiki/Server_Side_Includes" target="_blank">Server Side Includes</a>です。  
 これは昔の Web サイトで現在の時間を表示するのに用いられたテクニックと全く同じです。  
@@ -377,7 +386,8 @@ Custom Element のタグの名前は URL のパスとして、属性は GET パ�
 `#include` コメントはサーバーがページ全体を送信する前に、`/blue-buy?sku=t_porsche` の中身に置き換えられます。  
 この時の nginx の設定ファイルは以下のようになります。
 
-<pre class="highlight"><code>upstream team_blue {
+```
+upstream team_blue {
   server team_blue:3001;
 }
 upstream team_green {
@@ -404,7 +414,7 @@ server {
     proxy_pass  http://team_red;
   }
 }
-</code></pre>
+```
 
 `ssi: on;` の部分で SSI を許可しています。  
 また`upstream` と`location` の部分でそれぞれのチームに URL を割り当てています。  
@@ -427,10 +437,11 @@ JavaScript を有効にすると、最初のページ全体のロードだけが
 このサンプルコードはローカルマシンで試せます。  
 (docker-compose をインストールする必要があります)
 
-<pre class="highlight"><code>git clone https://github.com/neuland/micro-frontends.git
+```
+git clone https://github.com/neuland/micro-frontends.git
 cd micro-frontends/2-composition-universal
 docker-compose up --build
-</code></pre>
+```
 
 Docker は Nginx を 3000 ポートで起動して、さらにそれぞれのチームのサーバーのイメージを起動します。  
 `http://127.0.0.1:3000/`にアクセスすると赤のトラクターが表示されます。  
@@ -453,15 +464,17 @@ SSI/ESI の方法の欠点は**一番描画の遅いコンポーネントがペ�
 
 **Before**
 
-<pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;
-  &lt;!--#include virtual="/green-recos?sku=t_porsche" --&gt;
-&lt;/green-recos&gt;
-</code></pre>
+```xml
+<green-recos sku="t_porsche">
+  <!--#include virtual="/green-recos?sku=t_porsche" -->
+</green-recos>
+```
 
 **After**
 
-<pre class="highlight"><code>&lt;green-recos sku="t_porsche"&gt;&lt;/green-recos&gt;
-</code></pre>
+```xml
+<green-recos sku="t_porsche"></green-recos>
+```
 
 重要事項として、Custome Element は<a href="https://developers.google.com/web/fundamentals/web-components/customelements#jsapi" target="_blank">self-closing</a>ができません。  
 そのため`<green-recos sku="t_porsche" />` とした場合は正しく動作しない可能性があります。
