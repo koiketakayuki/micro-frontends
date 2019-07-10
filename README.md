@@ -579,4 +579,4 @@ E-コマースのよりよいフロントエンドを追及している。
 
 なお、翻訳版のサイトも Github Pages でホスティングされています。  
 ソースコードは<a href="https://github.com/koiketakayuki/micro-frontends/" targe="_blank">こちら</a>で見ることができます。  
-修正等がありましたら、Pull Request か Issue もしくはメール(koike.takayuki0907@gmail.com)で連絡を頂けると助かります。
+修正等がありましたら、Pull Request か Issue もしくはメール(koiketakayuki.dev@gmail.com)で連絡を頂けると助かります。
